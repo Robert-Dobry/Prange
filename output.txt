@@ -1,0 +1,10 @@
+
+Information set:
+| 1 2 |
+
+Generator matrix:
+| 1 0 0 0 |
+| 0 1 1 0 |
+
+Random codeword(m*G, where m is random vector of gf(2)):
+| 1 0 0 0 |
