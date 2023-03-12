@@ -83,8 +83,8 @@ def print_set(r):
     print('|')
         
 
-n=4
-k=2
+n=7
+k=4
 w = 1
 
 inf_set=gen_information_set(n,k)
@@ -96,7 +96,7 @@ masked_m=mask_matrix(m,inf_set)
 masked_r=mask_vector(p,inf_set)
 x = mat_mul(masked_r, masked_m)
 
-
+print(f"PRANGE'S ISD for n={n}, k={k}, w={w}")
 print('\ninf set:')
 print_set(inf_set)
 print('\ngen matrix:')
