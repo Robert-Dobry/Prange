@@ -1,9 +1,14 @@
-import random
+import random, numpy
 
 def mask_matrix(m, inf_set):
     result = []
     for row in m:
         result.append(mask_vector(row,inf_set))
+    return result
+
+
+def mat_mul(a,b):
+    result = numpy.dot(a,b)
     return result
 
 
@@ -89,6 +94,8 @@ e = gen_random_e(n,w)
 p = add_vectors(r,e)
 masked_m=mask_matrix(m,inf_set)
 masked_r=mask_vector(p,inf_set)
+x = mat_mul(masked_r, masked_m)
+
 
 print('\ninf set:')
 print_set(inf_set)
@@ -104,3 +111,5 @@ print('\nmasked g:')
 print_matrix(masked_m)
 print('\nmasked r:')
 print_set(masked_r)
+print('\nx:')
+print_set(x)
