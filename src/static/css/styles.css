@@ -1,12 +1,12 @@
 body {
-    background-color: rgba(0,0,0, 0.95);
+    background-color: rgba(0,0,0, 0.99);
 }
 
 .moja {
     color: white;
     font-size: 50px;
     font-weight: bold;
-    background-color: rgba(0, 0,0, 0.95);
+    background-color: rgba(0, 0, 0, 0.99);
     padding-left: 10px;
 }
 
