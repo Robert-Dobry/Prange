@@ -10,7 +10,7 @@ def mask_matrix(m, inf_set):
 def vector_str(v):
     str_v = [str(n) for n in v]
     result = " "
-    result = '<br>' + result.join(str_v)+ '</br>'
+    result = '<p>' + result.join(str_v)+ '</p>'
     return result
 
 
