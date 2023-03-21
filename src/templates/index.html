@@ -4,26 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prange</title>
+    <title>BP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>
-        PLAIN ISD
-    </h1>
+   <div class="div1">
 
+    <span class="moja">
+        Linear
+    </span>
+
+    <span class="stranka">
+        Code
+    </span>
+
+   </div>
+
+   <div class="div2">
     <form>
-        <label> Enter generator matrix: </label>
-        <input type="text"><br>
+        <label for="n"> 
+            <span class="n-mat"> N: </span>    
+        </label>
 
-        <label> Enter reveived vector: </label>
-        <input type="text"><br>
+        <input class="n-input" type="text" id="n" size="4">
 
-        <label> Enter w (error weight) </label>
-        <input type="text"><br>
+        <label for="k">
+            <span class="n-mat"> K: </span>    
+        </label>
 
-        <input type="submit" value="calculate">
+        <input class="k-input" type="text" id="k" size="4"><br>
 
-      
+        <input class="gen" type="submit" id="submit" value="generate">
+
     </form>
+   </div>
+
+
 </body>
 </html>

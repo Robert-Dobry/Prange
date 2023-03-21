@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 from func import generate_matrix, matrix_str
 
 app = Flask(__name__, template_folder="templates")

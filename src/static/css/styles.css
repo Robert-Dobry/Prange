@@ -1,0 +1,54 @@
+body {
+    background-color: rgba(0,0,0, 0.95);
+}
+
+.moja {
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    background-color: rgba(0, 0,0, 0.95);
+    padding-left: 10px;
+}
+
+.stranka {
+    background-color: orange;
+    font-size: 50px;
+    font-weight: bold;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 4%;
+}
+
+.div1 {
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.div2 {
+    margin-top: 50px;
+}
+
+.n-mat {
+    font-size: 30px;
+    margin-left: 15px;
+    color: orange;
+}
+
+.k-input {
+    font-size: 20px;
+
+}
+
+.n-input {
+    font-size: 20px;
+}
+
+.gen {
+    margin-top: 30px;
+    font-size: 20px;
+    margin-left: 50px;
+    font-weight: bold;
+    padding-left: 77px;
+    padding-right: 77px;
+}
+
