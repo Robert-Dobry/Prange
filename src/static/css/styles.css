@@ -11,6 +11,7 @@ body {
     background-color: greenyellow;
     display: inline-block;
     align-items: center;
+    /* overflow-x: auto; */
 }
 
 .container-child {
@@ -19,6 +20,8 @@ body {
     margin: 5px;
     display: block;
     padding: 5px;
+    width: fit-content;
+    white-space: nowrap;
 }
 
 

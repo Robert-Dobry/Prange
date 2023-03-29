@@ -11,38 +11,50 @@
     <div class="container">
         G:
         <div class="container-child">
-            <span class="matrix-span">
             {% for row in matrix.data %}
                 {% for item in row %}
                     {{item}}
                 {% endfor %}<br>
             {% endfor %}
-            </span>
         </div><br>
-        m:
+        I:
         <div class="container-child">
-            <span class="received-span">
-            {% for item in m.data %}
+            {% for item in i.data %}
                 {{item}}
             {% endfor %}
-            </span>
-        </div><br>
-        e:
-        <div class="container-child">
-            <span>
-                {% for item in e.data %}
-                {{item}}
-                {% endfor %}
-            </span>
         </div><br>
         r:
         <div class="container-child">
-            <span>
+            {% for item in m.data %}
+                {{item}}
+            {% endfor %}
+        </div><br>
+        e:
+        <div class="container-child">
+                {% for item in e.data %}
+                {{item}}
+                {% endfor %}
+        </div><br>
+        r+e:
+        <div class="container-child">
                 {% for item in r.data %}
                 {{item}}
                 {% endfor %}
-            </span><br>
-        </div>
+        </div><br>
+        &phi;G:
+        <div class="container-child">
+            {% for row in masked_matrix.data %}
+                {% for item in row %}
+                    {{item}}
+                {% endfor %}<br>
+            {% endfor %}
+        </div><br>
+        &phi;(r+e):
+        <div class="container-child">
+            {% for item in masked_r.data %}
+            {{item}}
+            {% endfor %}
+    </div><br>
 
     </div>
 </body>
