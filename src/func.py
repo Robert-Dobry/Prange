@@ -67,7 +67,7 @@ def gen_random_e(n,w):
 
 def gen_random_codeword(g):
     #m = [random.randint(0,1) for i in range(n)]
-    index = random.randint(0,k-1)
+    index = random.randint(0,len(g)-1)
     return g[index]
 
 

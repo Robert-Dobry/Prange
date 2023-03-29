@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Matrix</title>
 </head>
 <body>
-    
+    <div class="container">
+        G:
+        <div class="container-child">
+            <span class="matrix-span">
+            {% for row in matrix.data %}
+                {% for item in row %}
+                    {{item}}
+                {% endfor %}<br>
+            {% endfor %}
+            </span>
+        </div><br>
+        m:
+        <div class="container-child">
+            <span class="received-span">
+            {% for item in m.data %}
+                {{item}}
+            {% endfor %}
+            </span>
+        </div><br>
+        e:
+        <div class="container-child">
+            <span>
+                {% for item in e.data %}
+                {{item}}
+                {% endfor %}
+            </span>
+        </div><br>
+        r:
+        <div class="container-child">
+            <span>
+                {% for item in r.data %}
+                {{item}}
+                {% endfor %}
+            </span><br>
+        </div>
+
+    </div>
 </body>
 </html>
