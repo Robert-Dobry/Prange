@@ -92,16 +92,6 @@ def gen_information_set(n,k):
     return result
 
 
-def inverse_matrix_gf2(A):
-    a = numpy.array(A, dtype=numpy.int8)
-    det = int(numpy.linalg.det(a))
-    if det == 0:
-        return []
-    inv_matrix = numpy.transpose(a)
-    return inv_matrix
-
-
-
 def zeros(n):
     return [0 for i in range(n)]
 

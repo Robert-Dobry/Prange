@@ -1,6 +1,6 @@
 import func as f
 
-n = 5
+n = 8
 k = int(n/2) if n%2==0 else int(n/2)+1
 w = 1
 
@@ -36,15 +36,36 @@ print('------------------')
 f.print_set(masked_received_vector)
 
 # invert masked matrix
-inverse_masked_gen_matrix_t = f.inverse_matrix_gf2(masked_gen_matrix)
-inverse_masked_gen_matrix_i = f.inverse_matrix(masked_gen_matrix)
+inverse_masked_gen_matrix = f.inverse_matrix(masked_gen_matrix)
 
 # print inverted masked matrix
 print('\n\n Inverse masked matrix:')
-print('transpose:')
-f.print_matrix(inverse_masked_gen_matrix_t)
-print('linalg.inv:')
-f.print_matrix(f.float_to_int(inverse_masked_gen_matrix_i))
+f.print_matrix(f.float_to_int(inverse_masked_gen_matrix))
+
+# calculate vector x
+vector_x = f.multiply_gf2(masked_received_vector, inverse_masked_gen_matrix)
+
+# print vector x
+print('\n\nvector x:')
+f.print_set(vector_x)
+
+# calculate x*G
+
+x_dot_G = f.multiply_gf2(vector_x,gen_matrix)
+
+# #print x times G
+
+f.print_set(x_dot_G)
+
+# add r to x_dotG
+
+r_plus_xdotG = f.add_vectors(received_vector, x_dot_G)
+
+# print 
+
+f.print_set(r_plus_xdotG)
+
+
 
 
 
