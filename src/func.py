@@ -32,9 +32,9 @@ def hwt(v):
 def inverse_matrix(m):
     det = int(numpy.linalg.det(m))
     if det == 0:
-        return -1
+        return []
     else:
-        result = numpy.linalg.inv(m)
+        result = numpy.mod(numpy.linalg.inv(m),2)
         return result
 
 
@@ -44,6 +44,12 @@ def mat_mul(a,b):
     for item in x:
         result.append(item%2)
     return result
+
+
+def multiply_gf2(x, A):
+    x = numpy.array(x, dtype=numpy.int8)
+    A = numpy.array(A, dtype=numpy.int8)
+    return numpy.mod(numpy.dot(x,A),2)
 
 
 def add_vectors(a,b):
@@ -86,6 +92,16 @@ def gen_information_set(n,k):
     return result
 
 
+def inverse_matrix_gf2(A):
+    a = numpy.array(A, dtype=numpy.int8)
+    det = int(numpy.linalg.det(a))
+    if det == 0:
+        return []
+    inv_matrix = numpy.transpose(a)
+    return inv_matrix
+
+
+
 def zeros(n):
     return [0 for i in range(n)]
 
@@ -102,12 +118,26 @@ def generate_matrix(n,k):
     return result
 
 
+def gilbert_varshamov_bound(A):
+    pass
+
+
 def print_matrix(m):
     for row in m:
         print('|',end=' ')
         for num in row:
             print(num, end=' ')
         print('|')
+
+
+def float_to_int(a):
+    result = []
+    for row in a:
+        new_row = []
+        for item in row:
+            new_row.append(int(item))
+        result.append(new_row)
+    return result
 
 
 def print_set(r):
