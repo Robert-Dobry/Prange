@@ -96,6 +96,31 @@ def zeros(n):
     return [0 for i in range(n)]
 
 
+def calculate_indexes(t,n):
+    ni = []
+    if n % len(t) == 0:
+        ni = [int(n/len(t)) for i in range(len(t))]
+    else:
+        ni = []
+    print(n/len(t))
+    print(n%len(t))
+    print(ni)
+    return ni
+
+
+def fit_check(a,b):
+    count = 0
+    incr = a
+    while(a <= b):
+        print(a)
+        count+=1
+        a+=incr
+    return count
+
+
+        
+
+
 def generate_matrix(n,k):
     result = []
     for i in range(k):
