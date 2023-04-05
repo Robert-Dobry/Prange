@@ -1,4 +1,4 @@
-import random, numpy
+import random, numpy, math
 
 def mask_matrix(m, inf_set):
     result = []
@@ -97,29 +97,19 @@ def zeros(n):
 
 
 def calculate_indexes(t,n):
-    ni = []
-    if n % len(t) == 0:
-        ni = [int(n/len(t)) for i in range(len(t))]
-    else:
-        ni = []
-    print(n/len(t))
-    print(n%len(t))
-    print(ni)
-    return ni
+    # TODO
+    pass
 
-
-def fit_check(a,b):
+def remainder_division(a,b):
     count = 0
     incr = a
+    remainder = a-b
     while(a <= b):
-        print(a)
         count+=1
         a+=incr
-    return count
-
-
-        
-
+    remainder = b - (a - incr) 
+    return count,remainder
+     
 
 def generate_matrix(n,k):
     result = []
@@ -133,8 +123,19 @@ def generate_matrix(n,k):
     return result
 
 
-def gilbert_varshamov_bound(A):
-    pass
+def gilbert_varshamov_distance(A):
+    k, n = numpy.shape(A)
+    r = n-k
+    d = 1
+    bound = 2**r
+    while True:
+        summ = sumNcR(d-1, n) # sum from 0 to d including
+        print('suma: ', summ, 'd: ', d)
+        cond = (summ <= 2**r)
+        if (cond):
+            d+=1
+        else:
+            return d-1
 
 
 def print_matrix(m):
@@ -161,6 +162,15 @@ def print_set(r):
         print(num, end=' ')
     print('|')
         
+
+def sumNcR(d,n):
+    summary = 0
+    if d == 0:
+        return summary
+    for i in range(d+1):
+        addition = math.comb(n,i)
+        summary += addition
+    return summary
 
 
 

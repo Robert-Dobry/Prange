@@ -1,4 +1,0 @@
-x <- phi(r) * (phi(G))^-1
-
-if hwt(r + xG) <= w:
-    RETURN X
