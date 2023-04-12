@@ -96,9 +96,38 @@ def zeros(n):
     return [0 for i in range(n)]
 
 
-def calculate_indexes(t,n):
-    # TODO
+def check_input():
     pass
+
+
+def calculate_cardinalities(t, n):
+    result = []
+    n_sections = len(t)
+    if n % n_sections == 0:
+        for i in range(n_sections):
+            result.append( int( n/n_sections ) )
+        return result
+    else:
+        raise TypeError("Length of t must divide n")
+
+    # x = []
+    # while(sum(x) < n):
+    #     x.append(math.ceil(n/n_sections))
+    # while(sum(x) > n):
+    #     x[-1] -= 1
+    #     if x[-1] < t[-1]:
+    #         return -1
+    # return x
+
+
+def calculate_indexes(t,n):
+    
+    
+
+    cardinalities = []
+
+
+
 
 def remainder_division(a,b):
     count = 0
