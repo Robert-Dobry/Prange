@@ -100,6 +100,13 @@ def check_input():
     pass
 
 
+def gen_inf_set_hints(t,n,k):
+    N = [num for num in range(1,n+1)]
+    result = []    
+    idx = calculate_indexes(t,n, k)
+    
+
+
 def calculate_cardinalities(t, n):
     result = []
     n_sections = len(t)
@@ -120,13 +127,18 @@ def calculate_cardinalities(t, n):
     # return x
 
 
-def calculate_indexes(t,n):
-    
-    
+def calculate_indexes(t,n, k):
+    cardinalities = calculate_cardinalities(t,n)
+    initial_x = [(cardinalities[i] - t[i]) for i in range(len(t))]
+    print(sum(initial_x))
+    while sum(initial_x) > k:
+        #TODO calculate Pprange
+        initial_x[random.randint(0,3)] -= 1
+    return initial_x
 
-    cardinalities = []
 
-
+def Pprange(x,n,k):
+    pass
 
 
 def remainder_division(a,b):
