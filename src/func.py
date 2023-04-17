@@ -103,7 +103,7 @@ def check_input():
 def gen_inf_set_hints(t,n,k):
     N = [num for num in range(1,n+1)]
     result = []    
-    idx = calculate_indexes(t,n, k)
+    indexes = calculate_indexes(t,n, k)
     
 
 
@@ -124,7 +124,7 @@ def calculate_indexes(t,n,k):
     if sum(x) == k:
         return x
     elif sum(x) < k:
-        raise TypeError("invalid input xd")
+        raise TypeError("Sum od vector t has to be ")
     length = len(x)
     overlap = sum(x) - k
     for i in range(overlap):
@@ -132,16 +132,15 @@ def calculate_indexes(t,n,k):
         idx = None
         for j in range(length):
             x_copy = x.copy()
-            #print('x cpy: ',x_copy)
             x_copy[j]-=1
             if (x_copy[j] < 0):
-                break
+                continue
             p = Pprange(x_copy, t)
             if p > max_prob:
                 max_prob = p
                 idx = j
         x[idx] -= 1
-        x_copy = x
+        x_copy = x.copy()
     return x
 
 
@@ -177,14 +176,12 @@ def generate_matrix(n,k):
     return result
 
 
-def gilbert_varshamov_distance(A):
-    k, n = numpy.shape(A)
+def gilbert_varshamov_distance(n,k):
     r = n-k
     d = 1
     bound = 2**r
     while True:
         summ = sumNcR(d-1, n) # sum from 0 to d including
-        print('suma: ', summ, 'd: ', d)
         cond = (summ <= 2**r)
         if (cond):
             d+=1
