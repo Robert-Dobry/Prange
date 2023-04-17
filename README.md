@@ -21,3 +21,6 @@ x <- phi(r) * (phi(G))^-1
 - n = 32
 - ni = 8
 - initially choose Xi = ni - ti --> x=(3,7,6,4)
+
+
+## Pprange with particaular X = (ni - xi choose ti) * (ni choose ti)^-1

@@ -117,28 +117,41 @@ def calculate_cardinalities(t, n):
     else:
         raise TypeError("Length of t must divide n")
 
-    # x = []
-    # while(sum(x) < n):
-    #     x.append(math.ceil(n/n_sections))
-    # while(sum(x) > n):
-    #     x[-1] -= 1
-    #     if x[-1] < t[-1]:
-    #         return -1
-    # return x
 
-
-def calculate_indexes(t,n, k):
+def calculate_indexes(t,n,k):
     cardinalities = calculate_cardinalities(t,n)
-    initial_x = [(cardinalities[i] - t[i]) for i in range(len(t))]
-    print(sum(initial_x))
-    while sum(initial_x) > k:
-        #TODO calculate Pprange
-        initial_x[random.randint(0,3)] -= 1
-    return initial_x
+    x = [(cardinalities[i] - t[i]) for i in range(len(t))] # define initial X
+    if sum(x) == k:
+        return x
+    elif sum(x) < k:
+        raise TypeError("invalid input xd")
+    length = len(x)
+    overlap = sum(x) - k
+    for i in range(overlap):
+        max_prob = 0
+        idx = None
+        for j in range(length):
+            x_copy = x.copy()
+            #print('x cpy: ',x_copy)
+            x_copy[j]-=1
+            if (x_copy[j] < 0):
+                break
+            p = Pprange(x_copy, t)
+            if p > max_prob:
+                max_prob = p
+                idx = j
+        x[idx] -= 1
+        x_copy = x
+    return x
 
 
-def Pprange(x,n,k):
-    pass
+def Pprange(x, t): # calculates probabilty of success of ISD with given T decomposition
+    result = 1
+    lenght = len(x)
+    ni = 8
+    for i in range(lenght):
+        result *= (math.comb(ni-x[i], t[i])) / math.comb(ni, t[i])
+    return result
 
 
 def remainder_division(a,b):
@@ -212,6 +225,3 @@ def sumNcR(d,n):
         addition = math.comb(n,i)
         summary += addition
     return summary
-
-
-
