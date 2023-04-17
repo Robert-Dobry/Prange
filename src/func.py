@@ -104,7 +104,11 @@ def gen_inf_set_hints(t,n,k):
     N = [num for num in range(1,n+1)]
     result = []    
     indexes = calculate_indexes(t,n, k)
-    
+    print(indexes)
+    for i in range(len(indexes)):
+        pass
+        #TODO implement element selection for inf set
+
 
 
 def calculate_cardinalities(t, n):
