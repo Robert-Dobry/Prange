@@ -1,83 +1,10 @@
-body {
-    background-color: rgba(252, 252, 252, 0.99);
-}
-
-.container {
-    color: black;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    margin: 30px;
-    padding: 5px;
-    font-size: 25px;
-    background-color: greenyellow;
-    display: inline-block;
-    align-items: center;
-    /* overflow-x: auto; */
-}
-
-.container-child {
-    background-color: white;
-    border-style: solid;
-    margin: 5px;
-    display: block;
-    padding: 5px;
-    width: fit-content;
-    white-space: nowrap;
-}
-
-
-/* .received {
-    color: black;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    margin: 30px;
-    border-color: black;
-    border-style: solid;
-    display: inline-block;
-    padding: 5px;
-    font-size: 25px;
-    background-color: cyan;
-} */
-
-.moja {
-    color: white;
-    font-size: 50px;
-    font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.99);
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-
-.div1 {
-   
-    background-color: rgb(0, 0, 0);
-    margin: 100px;
-}
-
 .div2 {
-    background-color: black;
-    margin-top: 50px;
-    margin-left: 100px;
+    padding: 5px;
+    background-color: yellow;
+    margin: 10px;
 }
 
-.NK {
-    font-size: 50px;
-    margin-left: 15px;
-    color: rgb(255, 255, 255);
+.vstup {
+    padding: 20px;
+    margin: 20px;
 }
-
-input {
-    size: 50px;
-    font-size: 30px;
-}
-
-
-
-.gen {
-    margin-top: 30px;
-    font-size: 20px;
-    margin-left: 50px;
-    font-weight: bold;
-    padding-left: 77px;
-    padding-right: 77px;
-}
-

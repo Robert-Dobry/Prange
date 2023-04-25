@@ -11,13 +11,8 @@ def home():
 @app.route('/gen-code', methods=["POST","GET"])
 def generate():
     if request.method == "POST":
-        n = int(request.form['n'])
-        k = int(n/2) if (n%2==0) else int(n/2)+1
-
-        matrix_data = generate_matrix(n,k)
-        matrix={"data" : matrix_data}
-
-        return render_template('matrix.html', matrix=matrix)
+        form = request.form
+        return render_template('matrix.html')
     else:
         return render_template('index.html')
 
