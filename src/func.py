@@ -1,23 +1,10 @@
 import random, numpy, math
 
+
 def mask_matrix(m, inf_set):
     result = []
     for row in m:
         result.append(mask_vector(row,inf_set))
-    return result
-
-
-def vector_str(v):
-    str_v = [str(n) for n in v]
-    result = " "
-    result = '<p>' + result.join(str_v)+ '</p>'
-    return result
-
-
-def matrix_str(m):
-    result = ""
-    for row in m:
-        result+=vector_str(row)
     return result
 
 
@@ -100,15 +87,30 @@ def check_input():
     pass
 
 
-def gen_inf_set_hints(t,n,k):
-    N = [num for num in range(1,n+1)]
-    result = []    
-    indexes = calculate_indexes(t,n, k)
-    print(indexes)
-    for i in range(len(indexes)):
-        pass
-        #TODO implement element selection for inf set
-
+def gen_inf_set_with_hints(t,n,k):
+    N = []
+    result = []
+    result2 = []
+    num = 1
+    for item in t:
+        ni = []
+        for i in range(8):
+            ni.append(num)
+            num+=1
+        N.append(ni)
+    n_indexes = calculate_indexes(t,n, k)
+    print('indexes: ',n_indexes)
+    i = 0
+    for index in n_indexes:
+        subresult = []
+        while (len(subresult) < index):
+            a = random.choice(N[i])
+            if a not in subresult:
+                subresult.append(a)
+        subresult.sort()
+        result += subresult
+        i+=1
+    return result
 
 
 def calculate_cardinalities(t, n):
@@ -226,3 +228,7 @@ def sumNcR(d,n):
         addition = math.comb(n,i)
         summary += addition
     return summary
+
+
+def information_set_decoding(n,k,w,t):
+    pass
