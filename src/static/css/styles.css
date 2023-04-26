@@ -8,3 +8,16 @@
     padding: 20px;
     margin: 20px;
 }
+
+.container-child {
+    border-style: solid;
+    display: inline-block;
+    padding: 5px;
+    font-size: 22px;
+    margin: 10px
+}
+
+.container {
+    margin: 30px;
+    padding: 30px;
+}

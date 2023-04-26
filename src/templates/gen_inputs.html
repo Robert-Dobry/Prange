@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Inputs</title>
+</head>
+<body>
+
+    <div class="container">
+        <b>Generator matrix:</b><br>
+
+        <div class="container-child">
+        {% for row in data["matrix"] %}
+        <tr>
+            {% for elem in row %}
+            <td>{{elem}}</td>
+            {% endfor %}<br>
+        </tr>
+        {% endfor %}
+        </div><br><br>
+
+        <b></b>Gilbert-Varshamov distance:</b><br>
+        <div class="container-child">
+            {{ data["gv"] }}
+        </div><br>
+
+        <button onclick="decode"> Decode </button>
+
+    </div>
+
+</body>
+<script>
+    function decode(){
+        alert("decode")
+    }
+</script>
+</html>
