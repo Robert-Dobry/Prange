@@ -1,15 +1,14 @@
 from flask import Flask, render_template, request, url_for, redirect, jsonify
-import os, main
+import os, service
 
 app = Flask(__name__, template_folder="templates")
-
 
 @app.route('/')
 def home():
     return "MAIN PAGE"
 
 
-@app.route('/generate-code', methods=["POST","GET"])
+@app.route('/newcode', methods=["POST","GET"])
 def generate_code():
     if request.method == "POST":
         form = request.form
@@ -18,14 +17,24 @@ def generate_code():
     else:
         return render_template('index.html')
     
-@app.route('/generate-inputs', methods=["POST", "GET"])
+@app.route('/input', methods=["POST", "GET"])
 def generate_inputs():
     if request.method== "GET":
         t_size = os.environ["T_SIZE"]
-        data = main.main(int(t_size))
+        data = service.generate_data(int(t_size))
+        service.DATA = data
         return render_template('gen_inputs.html', data=data)
     else:
-        return "under development"
+        if request.form.get("name") == 'plain':
+            output = service.decode_plain_isd(service.DATA)
+            return render_template('decoded.html', data=output)
+        else:
+            print(False)
+            # output = service.decode_with_hints(service.DATA)
+            # return render_template('decoded.html', data=output)
+
+
+
 
 
 if __name__ == "__main__":

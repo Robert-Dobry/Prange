@@ -16,7 +16,9 @@
         <div class="container-child">
         {% for row in data["gen_matrix"] %}
         <tr>
-            <td>{{ row }}</td><br>
+            {% for elem in row %}
+            <td>{{elem}}</td>
+            {% endfor %}<br>
         </tr>
         {% endfor %}
         </div><br><br>
@@ -51,19 +53,18 @@
             {{ data["t_hints"] }}
         </div><br>
 
+        <form target="_blank" method="post">
+            <span> 
+            <input type="submit" name="plain" value="decode(plain isd)">   
+            </span>
 
-
-
-        
-
-        <button onclick="decode"> Decode </button>
+            <span> 
+            <input type="submit" name="hints" value="decode(with hints)">   
+            </span>
+        </form>
 
     </div>
 
 </body>
-<script>
-    function decode(){
-        alert("decode")
-    }
-</script>
+
 </html>

@@ -37,7 +37,6 @@ def multiply_gf2(x, A):
     x = numpy.array(x, dtype=numpy.int8)
     A = numpy.array(A, dtype=numpy.int8)
     result = [int(x) for x in numpy.mod(numpy.dot(x,A),2)]
-    
     return result
     
 
@@ -85,14 +84,11 @@ def gen_random_t(size, omega):
     return result
         
 
-        
-
 def gen_random_message(n):
     result = []
     for i in range(n):
         result.append(random.randint(0,1))
     return result
-
 
 
 def mask_vector(v, inf_set):
