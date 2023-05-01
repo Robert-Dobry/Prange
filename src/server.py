@@ -25,14 +25,9 @@ def generate_inputs():
         service.DATA = data
         return render_template('gen_inputs.html', data=data)
     else:
-        if request.form.get("name") == 'plain':
-            output = service.decode_plain_isd(service.DATA)
-            return render_template('decoded.html', data=output)
-        else:
-            print(False)
-            # output = service.decode_with_hints(service.DATA)
-            # return render_template('decoded.html', data=output)
-
+        output = service.decode_plain_isd(service.DATA)
+        return render_template('decoded.html', data=output)
+    
 
 
 

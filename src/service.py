@@ -51,9 +51,10 @@ def decode_with_hints(data):
     n = data["n"]
     k = data["k"]
     n_attemps = 0
-    while True and n_attemps < 5000:
+    while True and n_attemps < 1000:
         n_attemps+=1
         inf_set = f.gen_inf_set_with_hints(data["t_hints"], n, k)
+        print(inf_set)
         masked_matrix = f.mask_matrix(data["gen_matrix"], inf_set)
         masked_vector = f.mask_vector(data["received_vector"], inf_set)
         inverse_masked_matrix = f.inverse_matrix(masked_matrix)
@@ -98,4 +99,3 @@ def decode_plain_isd(data):
     return {
         "n_attempts" : n_attemps
     }
-

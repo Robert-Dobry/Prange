@@ -153,7 +153,7 @@ def calculate_indexes(t,n,k):
     if sum(x) == k:
         return x
     elif sum(x) < k:
-        raise TypeError("Sum od vector t has to be ")
+        raise TypeError("Sum of vector t has to be ")
     length = len(x)
     overlap = sum(x) - k
     for i in range(overlap):
