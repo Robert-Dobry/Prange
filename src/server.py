@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, jsonify
 import os, main
 
 app = Flask(__name__, template_folder="templates")
 
-T_SIZE = 0
 
 @app.route('/')
 def home():
@@ -23,7 +22,7 @@ def generate_code():
 def generate_inputs():
     if request.method== "GET":
         t_size = os.environ["T_SIZE"]
-        data = main.main(t_size)
+        data = main.main(int(t_size))
         return render_template('gen_inputs.html', data=data)
     else:
         return "under development"

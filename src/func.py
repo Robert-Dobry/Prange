@@ -36,8 +36,10 @@ def mat_mul(a,b):
 def multiply_gf2(x, A):
     x = numpy.array(x, dtype=numpy.int8)
     A = numpy.array(A, dtype=numpy.int8)
-    return numpy.mod(numpy.dot(x,A),2)
-
+    result = [int(x) for x in numpy.mod(numpy.dot(x,A),2)]
+    
+    return result
+    
 
 def add_vectors(a,b):
     result = []
@@ -51,17 +53,46 @@ def add_vectors(a,b):
 
 
 def gen_random_e(n,w):
-    result = [0 for i in range(n)]
+    result = zeros(n)
     indexes = gen_information_set(n,w)
     for i in indexes:
         result[i-1] = 1
     return result
-    
+
+
+def gen_random_e_with_hints(t):
+    result = []
+    print(t)
+    for ti in t:
+        subresult = []
+        subresult += zeros(8)
+        while hwt(subresult) < ti:
+            subresult[random.randint(0,len(subresult)-1)] = 1
+        result += subresult
+    return result
+
 
 def gen_random_codeword(g):
     #m = [random.randint(0,1) for i in range(n)]
     index = random.randint(0,len(g)-1)
     return g[index]
+
+
+def gen_random_t(size, omega):
+    result = zeros(size)
+    while sum(result) < omega:
+        result[random.randint(0,len(result)-1)] += 1
+    return result
+        
+
+        
+
+def gen_random_message(n):
+    result = []
+    for i in range(n):
+        result.append(random.randint(0,1))
+    return result
+
 
 
 def mask_vector(v, inf_set):
@@ -81,10 +112,6 @@ def gen_information_set(n,k):
 
 def zeros(n):
     return [0 for i in range(n)]
-
-
-def check_input():
-    pass
 
 
 def gen_inf_set_with_hints(t,n,k):
@@ -230,5 +257,7 @@ def sumNcR(d,n):
     return summary
 
 
-def information_set_decoding(n,k,w,t):
-    pass
+def information_set_decoding(n,k,w,t, hints):
+    if not hints:
+        pass
+    

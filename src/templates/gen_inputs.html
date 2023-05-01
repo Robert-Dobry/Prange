@@ -10,22 +10,51 @@
 <body>
 
     <div class="container">
+
         <b>Generator matrix:</b><br>
 
         <div class="container-child">
-        {% for row in data["matrix"] %}
+        {% for row in data["gen_matrix"] %}
         <tr>
-            {% for elem in row %}
-            <td>{{elem}}</td>
-            {% endfor %}<br>
+            <td>{{ row }}</td><br>
         </tr>
         {% endfor %}
         </div><br><br>
 
         <b></b>Gilbert-Varshamov distance:</b><br>
         <div class="container-child">
-            {{ data["gv"] }}
+            {{ data["gv_distance"] }}
         </div><br>
+
+        <b></b>Message:</b><br>
+        <div class="container-child">
+            {{ data["message_vector"] }}
+        </div><br>
+
+        <b></b>Omega:</b><br>
+        <div class="container-child">
+            {{ data["omega"] }}
+        </div><br>
+
+        <b></b>Error vector:</b><br>
+        <div class="container-child">
+            {{ data["error_vector"] }}
+        </div><br>
+
+        <b></b>Received vector:</b><br>
+        <div class="container-child">
+            {{ data["received_vector"] }}
+        </div><br>
+
+        <b></b>error decomposition:</b><br>
+        <div class="container-child">
+            {{ data["t_hints"] }}
+        </div><br>
+
+
+
+
+        
 
         <button onclick="decode"> Decode </button>
 
