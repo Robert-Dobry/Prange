@@ -47,33 +47,6 @@ def gilbert_varshamov_dist(t_len,k):
     return gv
 
 
-def decode_with_hints(data):
-    n = data["n"]
-    k = data["k"]
-    n_attemps = 0
-    while True and n_attemps < 1000:
-        n_attemps+=1
-        inf_set = f.gen_inf_set_with_hints(data["t_hints"], n, k)
-        print(inf_set)
-        masked_matrix = f.mask_matrix(data["gen_matrix"], inf_set)
-        masked_vector = f.mask_vector(data["received_vector"], inf_set)
-        inverse_masked_matrix = f.inverse_matrix(masked_matrix)
-        if inverse_masked_matrix==[]:
-            continue
-        x_vector = f.multiply_gf2(masked_vector, inverse_masked_matrix)
-        xG = f.multiply_gf2(x_vector, data["gen_matrix"])
-        xG_plus_r = f.add_vectors(xG, data["received_vector"])
-        hamming_w = f.hwt(xG_plus_r)
-        if hamming_w <= data["omega"]:
-            return {"decode_type" : "plain_isd",
-                    "vector" : x_vector,
-                    "n_attempts": n_attemps}
-        else:
-            continue
-    return {
-        "n_attempts" : n_attemps
-    }
-
 def decode_plain_isd(data):
     n = data["n"]
     k = data["k"]
@@ -99,3 +72,9 @@ def decode_plain_isd(data):
     return {
         "n_attempts" : n_attemps
     }
+
+
+# len_t = 20
+
+# data = generate_data(len_t)
+# print(json.dumps(data,indent=4))

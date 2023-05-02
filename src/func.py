@@ -61,7 +61,6 @@ def gen_random_e(n,w):
 
 def gen_random_e_with_hints(t):
     result = []
-    print(t)
     for ti in t:
         subresult = []
         subresult += zeros(8)
@@ -113,7 +112,6 @@ def zeros(n):
 def gen_inf_set_with_hints(t,n,k):
     N = []
     result = []
-    result2 = []
     num = 1
     for item in t:
         ni = []
@@ -121,7 +119,7 @@ def gen_inf_set_with_hints(t,n,k):
             ni.append(num)
             num+=1
         N.append(ni)
-    n_indexes = calculate_indexes(t,n, k)
+    n_indexes = calculate_indexes(t,n,k)
     print('indexes: ',n_indexes)
     i = 0
     for index in n_indexes:
@@ -135,6 +133,38 @@ def gen_inf_set_with_hints(t,n,k):
         i+=1
     return result
 
+
+def gen_inf_set_with_x(x, n, k): # x = [4,0,8]
+    result = []
+    N_sections = gen_n_sections(len(x))
+    print(N_sections)
+    i = 0
+    for xi in x:
+        subresult = []
+        while len(subresult) < xi:
+            random_index = random.randint(0,7)
+            random_num = N_sections[i][random_index]
+            if random_num not in subresult:
+                subresult.append(random_num)
+        subresult.sort()
+        result += subresult
+        i+=1
+    return result
+    print(result)
+
+
+def gen_n_sections(n):
+    result = []
+    num = 1
+    for i in range(n):
+        ni = []
+        for j in range(8):
+            ni.append(num)
+            num+=1
+        result.append(ni)
+    return result
+        
+    
 
 def calculate_cardinalities(t, n):
     result = []
@@ -153,7 +183,7 @@ def calculate_indexes(t,n,k):
     if sum(x) == k:
         return x
     elif sum(x) < k:
-        raise TypeError("Sum of vector t has to be ")
+        raise TypeError("Sum of vector t has to be")
     length = len(x)
     overlap = sum(x) - k
     for i in range(overlap):
