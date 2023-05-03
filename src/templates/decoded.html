@@ -10,9 +10,24 @@
 <body>
     <div class="container">
 
+        <div>
+        <span class="decode-type">
+            {{ data["decode_type"]}}
+        </span>
+        </div><br>
+
         <b></b>Message:</b><br>
         <div class="container-child">
-            {{ data["vector"] }}
+            {% for item in data["vector"] %}
+                {{ item }}
+            {% endfor %}
+        </div><br>
+
+        <b></b>Error:</b><br>
+        <div class="container-child">
+            {% for item in data["error"] %}
+                {{ item }}
+            {% endfor %}
         </div><br>
 
         <b></b>Attempts:</b><br>

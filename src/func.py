@@ -16,6 +16,19 @@ def hwt(v):
     return result
 
 
+def substract_vectors_numpy(a,b):
+    return numpy.mod(numpy.subtract(a,b),2)
+
+
+def substract_vectors(a,b):
+    result = []
+    for i in range(len(a)):
+        result.append((a[i]-b[i])%2)
+    return result
+
+
+
+
 def inverse_matrix(m):
     det = int(numpy.linalg.det(m))
     if det == 0:

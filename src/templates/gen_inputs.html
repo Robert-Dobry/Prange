@@ -13,7 +13,7 @@
 
         <b>Generator matrix:</b><br>
 
-        <div class="container-child">
+        <div class="container-child-input">
         {% for row in data["gen_matrix"] %}
         <tr>
             {% for elem in row %}
@@ -30,7 +30,9 @@
 
         <b></b>Message:</b><br>
         <div class="container-child">
-            {{ data["message_vector"] }}
+            {% for item in data["message_vector"] %}
+                {{ item }}
+            {% endfor %}
         </div><br>
 
         <b></b>Max allowed errors:</b><br>
@@ -39,23 +41,29 @@
         </div><br>
 
         <b></b>Omega:</b><br>
-        <div class="container-child">
+        <div class="container-child-input">
             {{ data["omega"] }}
         </div><br>
 
         <b></b>Error vector:</b><br>
         <div class="container-child">
-            {{ data["error_vector"] }}
+            {% for item in data["error_vector"] %}
+                {{ item }}
+            {% endfor %}
         </div><br>
 
         <b></b>Received vector:</b><br>
-        <div class="container-child">
-            {{ data["received_vector"] }}
+        <div class="container-child-input">
+            {% for item in data["received_vector"] %}
+                {{ item }}
+            {% endfor %}
         </div><br>
 
         <b></b>error decomposition:</b><br>
-        <div class="container-child">
-            {{ data["t_hints"] }}
+        <div class="container-child-input">
+            {% for item in data["t_hints"] %}
+                {{ item }}
+            {% endfor %}
         </div><br>
 
         <form target="_blank" method="post">

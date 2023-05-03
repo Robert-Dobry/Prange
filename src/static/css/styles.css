@@ -4,6 +4,15 @@
     margin: 10px;
 }
 
+.decode-type {
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin: 15px;
+    margin-bottom: 100px;
+
+}
+
 .vstup {
     padding: 20px;
     margin: 20px;
@@ -20,4 +29,14 @@
 .container {
     margin: 30px;
     padding: 30px;
+}
+
+.container-child-input {
+    background-color: orange;
+    border-style: solid;
+    display: inline-block;
+    padding: 5px;
+    font-size: 22px;
+    margin: 10px;
+
 }

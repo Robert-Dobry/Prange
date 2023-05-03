@@ -1,5 +1,5 @@
 import func as f
-import math, random, json
+import math, random, json, numpy
 
 DATA = None
 
@@ -12,14 +12,16 @@ def generate_data(t_len):
     gv_distance = f.gilbert_varshamov_distance(n,k)
 
     max_n_errors = int((gv_distance-1)/2)
+    print(max_n_errors)
     message = f.gen_random_message(k)
-    omega = random.randint(1,max_n_errors) # ISD INPUT
+    omega = random.randint(0,max_n_errors) # ISD INPUT
 
     t_hints = f.gen_random_t(t_len, omega) # ISD INPUT
     error_vector = f.gen_random_e_with_hints(t_hints)
 
     received_vector = f.multiply_gf2(message, g_matrix)
     received_vector = f.add_vectors(received_vector, error_vector)
+
     result["n"] = n
     result["k"] = k
     result["gen_matrix"] = g_matrix
@@ -62,10 +64,14 @@ def decode_plain_isd(data):
         x_vector = f.multiply_gf2(masked_vector, inverse_masked_matrix)
         xG = f.multiply_gf2(x_vector, data["gen_matrix"])
         xG_plus_r = f.add_vectors(xG, data["received_vector"])
+        error = f.multiply_gf2(masked_vector, inverse_masked_matrix)
+        error = f.multiply_gf2(error, data["gen_matrix"])
+        error = f.substract_vectors(data["received_vector"], error)
         hamming_w = f.hwt(xG_plus_r)
         if hamming_w <= data["omega"]:
-            return {"decode_type" : "plain_isd",
+            return {"decode_type" : "Plain ISD",
                     "vector" : x_vector,
+                    "error" : error,
                     "n_attempts": n_attemps}
         else:
             continue
@@ -74,7 +80,4 @@ def decode_plain_isd(data):
     }
 
 
-# len_t = 20
 
-# data = generate_data(len_t)
-# print(json.dumps(data,indent=4))
