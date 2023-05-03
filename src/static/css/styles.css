@@ -1,8 +1,3 @@
-.div2 {
-    padding: 5px;
-    background-color: yellow;
-    margin: 10px;
-}
 
 .decode-type {
     font-size: 40px;
@@ -16,27 +11,127 @@
 .vstup {
     padding: 20px;
     margin: 20px;
-}
-
-.container-child {
-    border-style: solid;
-    display: inline-block;
-    padding: 5px;
     font-size: 22px;
-    margin: 10px
 }
 
 .container {
     margin: 30px;
     padding: 30px;
+    background-color: lightgrey;
+    width: fit-content;
+    border-style: dotted;
 }
 
 .container-child-input {
-    background-color: orange;
+    background-color: lightgreen;
     border-style: solid;
     display: inline-block;
     padding: 5px;
     font-size: 22px;
     margin: 10px;
+    width: fit-content;
+    white-space: nowrap;
 
+}
+
+.title {
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin: 15px;
+    margin-bottom: 100px;
+}
+
+.container-child-output {
+    background-color: lightcyan;
+    border-style: solid;
+    display: inline-block;
+    padding: 5px;
+    font-size: 22px;
+    margin: 10px;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.data-item {
+    font-size: 22px;
+}
+
+.mat-title {
+    font-size: 22px;
+}
+
+.inpt {
+    height: 30px;
+    width: fit-content;
+    background-color: lightgreen;
+    border-style: solid;
+    margin: 5px;
+    padding: 5px;
+}
+
+.outpt {
+    height: 30px;
+    width: fit-content;
+    background-color: lightcyan;
+    border-style: solid;
+    margin: 5px;
+    padding: 5px;
+}
+
+.add-info {
+    height: 30px;
+    width: fit-content;
+    background-color: lightpink;
+    border-style: solid;
+    margin: 5px;
+    padding: 5px;
+}
+
+.legenda {
+    display: flex;
+    font-size: 22px;
+    width: fit-content;
+    margin-top: 40px;
+}
+
+body {
+    align-items: center;
+}
+
+
+.container-child-add-info {
+    background-color: lightpink;
+    border-style: solid;
+    display: inline-block;
+    padding: 5px;
+    font-size: 22px;
+    margin: 10px;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.decode-buttons {
+    width: fit-content;
+    margin-top: 30px;
+    padding: 10px;
+    display: flex;
+}
+
+button {
+    font-size: 20px;
+    margin: 10px;
+    border-style: solid;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: grey;
+    cursor: pointer;
+    animation: bounce 0.5s ease-in-out;
+}
+
+button:active {
+    transform: scale(0.95);
+    animation: shake 0.5s ease-in-out;
 }

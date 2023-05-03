@@ -16,24 +16,24 @@
         </span>
         </div><br>
 
-        <b></b>Message:</b><br>
-        <div class="container-child">
+        <span class="data-item"> Message: </span>
+        <div class="container-child-output">
             {% for item in data["vector"] %}
                 {{ item }}
             {% endfor %}
-        </div><br>
+        </div><br><br><br>
 
-        <b></b>Error:</b><br>
-        <div class="container-child">
+        <span class="data-item"> Error: </span>
+        <div class="container-child-output">
             {% for item in data["error"] %}
                 {{ item }}
             {% endfor %}
-        </div><br>
+        </div><br><br><br>
 
-        <b></b>Attempts:</b><br>
-        <div class="container-child">
+        <span class="data-item"> Attempts: </span>
+        <div class="container-child-add-info">
             {{ data["n_attempts"] }}
-        </div><br>
+        </div><br><br><br>
 
     </div>
 </body>

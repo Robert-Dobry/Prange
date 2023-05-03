@@ -49,11 +49,11 @@ def gilbert_varshamov_dist(t_len,k):
     return gv
 
 
-def decode_plain_isd(data):
+def decode_plain_isd(data, attempts):
     n = data["n"]
     k = data["k"]
     n_attemps = 0
-    while True and n_attemps < 5000:
+    while True and n_attemps < attempts:
         n_attemps += 1
         inf_set = f.gen_information_set(n,k)
         masked_matrix = f.mask_matrix(data["gen_matrix"], inf_set)

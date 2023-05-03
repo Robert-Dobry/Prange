@@ -8,26 +8,26 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-   <div class="div1">
+   
 
-    <span>
-        LinearCode
-    </span>
+   <div class="container">
 
-   </div>
-
-   <div class="div2">
-    <form method="post">
+        <form method="post">
         
-        <span class="vstup"> Zadaj dlzku t:     
+        <span class="vstup"> Enter T size:     
         <input type="text" name="t_size" size="4" >
         </span><br><br>
+        <span class="vstup"> Enter max attempt count:     
+        <input type="text" name="max_attempts" size="4" >
+        </span><br><br>
+
 
         <span class="vstup"> 
-        <input type="submit" value="generate code">   
+            <button type="submit" name="decode-button" value="gen-code">Generate Input</button>   
         </span>
 
-    </form>
+        </form>
+
    </div>
 
 
