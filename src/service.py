@@ -2,10 +2,15 @@ import func as f
 import math, random, json, numpy
 
 DATA = None
+HINTS = []
 
-def generate_data(t_len):
+def generate_data(t,n):
+
+    t = t.split()
+    t = [int(item) for item in t]
+    print(t)
+    
     result = {}
-    n = int(t_len) * 8
     k = int(n/2) if n%2==0 else int(n/2)+1 
 
     g_matrix = f.generate_matrix(n,k) # ISD INPUT
@@ -16,7 +21,7 @@ def generate_data(t_len):
     message = f.gen_random_message(k)
     omega = random.randint(0,max_n_errors) # ISD INPUT
 
-    t_hints = f.gen_random_t(t_len, omega) # ISD INPUT
+    t_hints = f.gen_random_t(len(t), omega) # ISD INPUT
     error_vector = f.gen_random_e_with_hints(t_hints)
 
     received_vector = f.multiply_gf2(message, g_matrix)
@@ -43,8 +48,8 @@ def create_code(t_len):
     matrix = f.generate_matrix(n,k)
     return matrix
 
-def gilbert_varshamov_dist(t_len,k):
-    n = t_len * 8
+def gilbert_varshamov_dist(n):
+    k = int(n/2)
     gv = f.gilbert_varshamov_distance(n,k)
     return gv
 
