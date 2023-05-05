@@ -72,14 +72,14 @@ def gen_random_e(n,w):
     return result
 
 
-def gen_random_e_with_hints(t):
+def gen_random_e_with_hints(t,n):
     result = []
     for ti in t:
         subresult = []
-        subresult += zeros(8)
+        subresult += zeros(int(n/2))
         while hwt(subresult) < ti:
             subresult[random.randint(0,len(subresult)-1)] = 1
-        result += subresult
+        result.append(subresult) #+= subresult
     return result
 
 
@@ -128,12 +128,11 @@ def gen_inf_set_with_hints(t,n,k):
     num = 1
     for item in t:
         ni = []
-        for i in range(8):
+        for i in range(int(n/2)):
             ni.append(num)
             num+=1
         N.append(ni)
     n_indexes = calculate_indexes(t,n,k)
-    print('indexes: ',n_indexes)
     i = 0
     for index in n_indexes:
         subresult = []
@@ -147,15 +146,15 @@ def gen_inf_set_with_hints(t,n,k):
     return result
 
 
-def gen_inf_set_with_x(x, n, k): # x = [4,0,8]
+def gen_inf_set_with_x(x, n, k): # x = [4,4]
     result = []
-    N_sections = gen_n_sections(len(x))
+    N_sections = gen_2_sections(n)
     print(N_sections)
     i = 0
     for xi in x:
         subresult = []
         while len(subresult) < xi:
-            random_index = random.randint(0,7)
+            random_index = random.randint(0,int(n/2)-1)
             random_num = N_sections[i][random_index]
             if random_num not in subresult:
                 subresult.append(random_num)
@@ -163,15 +162,14 @@ def gen_inf_set_with_x(x, n, k): # x = [4,0,8]
         result += subresult
         i+=1
     return result
-    print(result)
 
 
-def gen_n_sections(n):
+def gen_2_sections(n):
     result = []
     num = 1
-    for i in range(n):
+    for i in range(2):
         ni = []
-        for j in range(8):
+        for j in range(int(n/2)):
             ni.append(num)
             num+=1
         result.append(ni)
@@ -195,8 +193,6 @@ def calculate_indexes(t,n,k):
     x = [(cardinalities[i] - t[i]) for i in range(len(t))] # define initial X
     if sum(x) == k:
         return x
-    elif sum(x) < k:
-        raise TypeError("Sum of vector t has to be")
     length = len(x)
     overlap = sum(x) - k
     for i in range(overlap):
@@ -207,7 +203,7 @@ def calculate_indexes(t,n,k):
             x_copy[j]-=1
             if (x_copy[j] < 0):
                 continue
-            p = Pprange(x_copy, t)
+            p = Pprange(x_copy, t, n)
             if p > max_prob:
                 max_prob = p
                 idx = j
@@ -216,10 +212,10 @@ def calculate_indexes(t,n,k):
     return x
 
 
-def Pprange(x, t): # calculates probabilty of success of ISD with given T decomposition
+def Pprange(x, t, n): # calculates probabilty of success of ISD with given T decomposition
     result = 1
     lenght = len(x)
-    ni = 8
+    ni = int(n/2)
     for i in range(lenght):
         result *= (math.comb(ni-x[i], t[i])) / math.comb(ni, t[i])
     return result
@@ -296,7 +292,4 @@ def sumNcR(d,n):
     return summary
 
 
-def information_set_decoding(n,k,w,t, hints):
-    if not hints:
-        pass
     
