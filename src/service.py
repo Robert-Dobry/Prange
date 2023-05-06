@@ -6,10 +6,15 @@ HINTS = []
 
 def generate_data(t,n):
 
-    t = t.split()
-    t = [int(item) for item in t]
+    if ' ' in t:
+        print(' is in t')
+        t = t.split()
+        t = [int(item) for item in t]
+    else:
+        t = [int(char) for char in t]
+
     print(t)
-    
+
     result = {}
     k = int(n/2) if n%2==0 else int(n/2)+1 
 
@@ -17,12 +22,10 @@ def generate_data(t,n):
     gv_distance = f.gilbert_varshamov_distance(n,k)
 
     max_n_errors = int((gv_distance-1)/2)
-    print(max_n_errors)
     message = f.gen_random_message(k)
-    omega = random.randint(0,max_n_errors) # ISD INPUT
+    error_vector = f.gen_random_e_with_hints(t, n)
 
-    t_hints = f.gen_random_t(len(t), omega) # ISD INPUT
-    error_vector = f.gen_random_e_with_hints(t_hints)
+    omega = sum(t)
 
     received_vector = f.multiply_gf2(message, g_matrix)
     received_vector = f.add_vectors(received_vector, error_vector)
@@ -35,7 +38,7 @@ def generate_data(t,n):
 
     result["message_vector"] = message
     result["omega"] = omega
-    result["t_hints"] = t_hints
+    result["t_hints"] = t
     result["error_vector"] = error_vector
 
     result["received_vector"] = received_vector
@@ -83,6 +86,3 @@ def decode_plain_isd(data, attempts):
     return {
         "n_attempts" : n_attemps
     }
-
-
-

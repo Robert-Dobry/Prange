@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Document</title>
 </head>
 <body>
 
-    <div>
-        Gilbert Varshamov distance: <h1>{{ gvd }}</h1>
-    </div>
+   
 
     <div class="container">
 
-        <form method="post">
         
-        <span class="vstup"> Enter T:     
-        <input type="text" name="t_hints" size="4" >
-        </span><br><br>
+            <span class="data-item">Gilbert-Varshamov distance:</span>
+            <div class="container-child-add-info">{{ gvd }}</div><br>
+            <span class="data-item">Maximum allowed errors: </span>
+            <div class="container-child-add-info">{{ max_errors }}</div><br>
+        
+            <div class="form">
+                <form method="post">
+                <span class="data-item"> Error decomposition: </span>    
+                <input type="text" name="t_hints" size="4" >
+            </div>
 
         <span class="vstup"> 
-            <button type="submit" name="submit-t" value="gen-code">Generate Inputs</button>   
+            <button type="submit" name="submit-t" value="gen-code">Generate Input</button>   
         </span>
 
         </form>

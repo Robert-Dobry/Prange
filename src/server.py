@@ -14,42 +14,42 @@ def generate_code():
     if request.method == "POST":
         form = request.form
         n_size = form["n_size"]
-        if n_size.isnumeric():
+        if n_size.isnumeric() and int(n_size) > 0 and (int(n_size) % 2) == 0:
             os.environ["N_SIZE"] = n_size
             return redirect(url_for('calculate_gvd'))
         else:
-            return "<h3>inputs must be numeric values!</h3>"
+            return "<h3>value n must be positive even integer</h3>"
     else:
         return render_template('index.html')
 
-@app.route('/gv-distance', methods=["POST","GET"])
+@app.route('/error-count', methods=["POST","GET"])
 def calculate_gvd():
     if request.method=='POST':
         form = request.form
         t_str = form["t_hints"]
         n_size = os.environ["N_SIZE"]
-        data = service.generate_data(t_str, n_size)
+        data = service.generate_data(t_str, int(n_size))
+        service.DATA = data
+        return redirect(url_for('generate_inputs'))
         # VYRIESIT WORKFLOW SO ZADANYM T A GENEROVANIM KODU A VSTUPOV
     else:
         n_size = os.environ["N_SIZE"]
         gvd = service.gilbert_varshamov_dist(int(n_size))
-        return render_template('enter_decomposition.html', gvd = gvd)
+        max_errors = int((gvd-1)/2)
+        return render_template('enter_decomposition.html', gvd = gvd, max_errors = max_errors)
     
-# @app.route('/input', methods=["POST", "GET"])
-# def generate_inputs():
-#     if request.method== "GET":
-#         n_size = os.environ["N_SIZE"]
-#         data = service.generate_data(int(n_size))
-#         service.DATA = data
-#         return render_template('gen_inputs.html', data=data)
-#     else:
-#         button = request.form["decode-button"]
-#         attempts = os.environ["N_ATTEMPTS"]
-#         if button == "plain":
-#             output = service.decode_plain_isd(service.DATA, int(attempts))
-#             return render_template('decoded.html', data=output)
-#         elif button == "hints":
-#             return "Under development"
+@app.route('/input', methods=["POST", "GET"])
+def generate_inputs():
+    if request.method== "GET":
+        return render_template('gen_inputs.html', data=service.DATA)
+    else:
+        button = request.form["decode-button"]
+        attempts = 5000
+        if button == "plain":
+            output = service.decode_plain_isd(service.DATA, attempts)
+            return render_template('decoded.html', data=output)
+        elif button == "hints":
+            return "Under development"
     
 
 

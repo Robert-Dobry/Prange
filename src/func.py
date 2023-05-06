@@ -79,7 +79,7 @@ def gen_random_e_with_hints(t,n):
         subresult += zeros(int(n/2))
         while hwt(subresult) < ti:
             subresult[random.randint(0,len(subresult)-1)] = 1
-        result.append(subresult) #+= subresult
+        result += subresult
     return result
 
 

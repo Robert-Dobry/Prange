@@ -8,10 +8,17 @@
 
 }
 
+.form {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 .vstup {
     padding: 20px;
-    margin: 20px;
+    margin: 35px;
     font-size: 22px;
+    margin-top: 20px;
+
 }
 
 .container {
@@ -19,7 +26,7 @@
     padding: 30px;
     background-color: lightgrey;
     width: fit-content;
-    border-style: dotted;
+    border-style: solid;
 }
 
 .container-child-input {
