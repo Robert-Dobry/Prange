@@ -149,7 +149,6 @@ def gen_inf_set_with_hints(t,n,k):
 def gen_inf_set_with_x(x, n, k): # x = [4,4]
     result = []
     N_sections = gen_2_sections(n)
-    print(N_sections)
     i = 0
     for xi in x:
         subresult = []

@@ -7,13 +7,11 @@ HINTS = []
 def generate_data(t,n):
 
     if ' ' in t:
-        print(' is in t')
         t = t.split()
         t = [int(item) for item in t]
     else:
         t = [int(char) for char in t]
 
-    print(t)
 
     result = {}
     k = int(n/2) if n%2==0 else int(n/2)+1 
@@ -84,5 +82,44 @@ def decode_plain_isd(data, attempts):
         else:
             continue
     return {
+        "decode_type" : "Plain ISD",
+        "n_attempts" : n_attemps
+    }
+
+
+def decode_with_hints(data, attempts):
+    n = data["n"]
+    k = data["k"]
+    t = data["t_hints"]
+    n_attemps = 0
+    inf_set_indexes = f.calculate_indexes(t,n,k)
+    print(inf_set_indexes)
+    while True and n_attemps < attempts:
+        n_attemps += 1
+        inf_set = f.gen_inf_set_with_x(inf_set_indexes, n,k)
+        print(inf_set)
+        masked_matrix = f.mask_matrix(data["gen_matrix"], inf_set)
+        masked_vector = f.mask_vector(data["received_vector"], inf_set)
+        inverse_masked_matrix = f.inverse_matrix(masked_matrix)
+        if inverse_masked_matrix==[]:
+            print('inv')
+            continue
+        x_vector = f.multiply_gf2(masked_vector, inverse_masked_matrix)
+        xG = f.multiply_gf2(x_vector, data["gen_matrix"])
+        xG_plus_r = f.add_vectors(xG, data["received_vector"])
+        error = f.multiply_gf2(masked_vector, inverse_masked_matrix)
+        error = f.multiply_gf2(error, data["gen_matrix"])
+        error = f.substract_vectors(data["received_vector"], error)
+        hamming_w = f.hwt(xG_plus_r)
+        if hamming_w <= data["omega"]:
+            return {"decode_type" : "ISD with Hints",
+                    "vector" : x_vector,
+                    "error" : error,
+                    "n_attempts": n_attemps}
+        else:
+            print('cond')
+            continue
+    return {
+        "decode_type" : "ISD with Hints",
         "n_attempts" : n_attemps
     }
