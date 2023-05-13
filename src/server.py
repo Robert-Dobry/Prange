@@ -1,7 +1,13 @@
-from flask import Flask, render_template, request, url_for, redirect, jsonify
-import os, service
+from flask import Flask, render_template, request, url_for, redirect
+import os, service, sys
 
-app = Flask(__name__, template_folder="templates")
+
+if getattr(sys, 'frozen', False):                                                                                                                                     
+      template_folder = os.path.join(sys.executable, '..','templates')                                                                                                  
+      static_folder = os.path.join(sys.executable, '..','static')                                                                                                       
+      app = Flask(__name__, template_folder = template_folder,                                                                                                       
+                              static_folder = static_folder)
+
 
 @app.route('/')
 def home():
@@ -56,4 +62,4 @@ def generate_inputs():
     
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5001, debug=True)

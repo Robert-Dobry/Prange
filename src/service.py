@@ -1,5 +1,4 @@
 import func as f
-import math, random, json, numpy
 
 DATA = None
 HINTS = []
