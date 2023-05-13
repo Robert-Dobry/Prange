@@ -24,8 +24,6 @@
         </div><br><br>
 
         
-
-    
         <span class="data-item"> Error decomposition: </span>
         <div class="container-child-input">
             {% for item in data["t_hints"] %}
@@ -55,7 +53,22 @@
             {{ data["max_n_errors"] }}
         </div><br>
 
- 
+        <span class="data-item"> Index selection for hints: </span>
+        <div class="container-child-add-info">
+            {% for item in data["vector_x"] %}
+                {{ item }}
+            {% endfor %}
+        </div><br>
+
+        <span class="data-item"> Succes prob with hints (1 iter): </span>
+        <div class="container-child-add-info">
+            {{ data["prob_hints"] }}
+        </div><br>
+
+        <span class="data-item"> Succes prob with plain isd (1 iter): </span>
+        <div class="container-child-add-info">
+            {{ data["prob_plain"] }}
+        </div><br>
 
         <span class="data-item"> Message: </span>
         <div class="container-child-output">
@@ -69,7 +82,14 @@
             {% for item in data["error_vector"] %}
                 {{ item }}
             {% endfor %}
-        </div>
+        </div><br>
+
+        <span class="data-item"> Warning: </span>
+        <div class="container-child">
+            {% for item in data["message_for_user"] %}
+                {{ item }}<br>
+            {% endfor %}
+        </div><br>
 
         <div class="legenda">
 

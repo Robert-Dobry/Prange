@@ -220,6 +220,13 @@ def Pprange(x, t, n): # calculates probabilty of success of ISD with given T dec
     return result
 
 
+def PPlainISD(n,k,w):
+    base = math.comb(n-k,w)
+    divider = math.comb(n,w)
+    result = base/divider
+    return result
+
+
 def remainder_division(a,b):
     count = 0
     incr = a

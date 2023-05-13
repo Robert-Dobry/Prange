@@ -118,6 +118,17 @@ body {
     white-space: nowrap;
 }
 
+.container-child {
+    background-color: white;
+    border-style: solid;
+    display: inline-block;
+    padding: 5px;
+    font-size: 22px;
+    margin: 10px;
+    width: fit-content;
+    white-space: nowrap;
+}
+
 .decode-buttons {
     width: fit-content;
     margin-top: 30px;

@@ -33,7 +33,6 @@ def calculate_gvd():
         data = service.generate_data(t_str, int(n_size))
         service.DATA = data
         return redirect(url_for('generate_inputs'))
-        # VYRIESIT WORKFLOW SO ZADANYM T A GENEROVANIM KODU A VSTUPOV
     else:
         n_size = os.environ["N_SIZE"]
         gvd = service.gilbert_varshamov_dist(int(n_size))
@@ -49,11 +48,9 @@ def generate_inputs():
         button = request.form["decode-button"]
         attempts = os.environ["N_ATTEMPTS"]
         if button == "plain":
-            print('plain')
             output = service.decode_plain_isd(service.DATA, int(attempts))
             return render_template('decoded.html', data=output)
         elif button == "hints":
-            print('hints')
             output = service.decode_with_hints(service.DATA, int(attempts))
             return render_template('decoded.html', data=output)
     
