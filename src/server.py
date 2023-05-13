@@ -2,13 +2,19 @@ from flask import Flask, render_template, request, url_for, redirect
 import os, service, sys
 
 
-if getattr(sys, 'frozen', False):                                                                                                                                     
-      template_folder = os.path.join(sys.executable, '..','templates')                                                                                                  
-      static_folder = os.path.join(sys.executable, '..','static')                                                                                                       
-      app = Flask(__name__, template_folder = template_folder,                                                                                                       
-                              static_folder = static_folder)
-else :
-    app = Flask(__name__,template_folder="templates")
+# if getattr(sys, 'frozen', False):                                                                                                                                     
+#       template_folder = os.path.join(sys.executable, '..','templates')                                                                                                  
+#       static_folder = os.path.join(sys.executable, '..','static')                                                                                                       
+#       app = Flask(__name__, template_folder = template_folder,                                                                                                       
+#                               static_folder = static_folder)
+# else :
+#     app = Flask(__name__,template_folder="templates",
+#                 static_folder='static'
+#                 )
+
+app = Flask(__name__,
+            template_folder='templates',
+            static_folder='static')
 
 PORT = os.getenv('PRANGE_PORT')
 if PORT == None:
