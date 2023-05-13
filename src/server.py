@@ -8,10 +8,7 @@ if getattr(sys, 'frozen', False):
       app = Flask(__name__, template_folder = template_folder,                                                                                                       
                               static_folder = static_folder)
 else :
-    app = Flask(__name__,
-                template_folder="templates",
-                static_folder="static"
-                )
+    app = Flask(__name__,template_folder="templates")
 
 PORT = os.getenv('PRANGE_PORT')
 if PORT == None:
