@@ -7,7 +7,14 @@ if getattr(sys, 'frozen', False):
       static_folder = os.path.join(sys.executable, '..','static')                                                                                                       
       app = Flask(__name__, template_folder = template_folder,                                                                                                       
                               static_folder = static_folder)
+else :
+    app = Flask(__name__,template_folder="templates")
 
+PORT = os.getenv('PRANGE_PORT')
+if PORT == None:
+    PORT=5000
+else:
+    PORT=int(PORT)
 
 @app.route('/')
 def home():
@@ -62,4 +69,4 @@ def generate_inputs():
     
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    app.run(host="0.0.0.0", port=PORT, debug=True)
