@@ -22,7 +22,7 @@ def home():
 
 
 @app.route('/begin', methods=["POST","GET"])
-def generate_code():
+def begin():
     if request.method == "POST":
         form = request.form
         n_size = form["n_size"]
@@ -43,9 +43,13 @@ def calculate_gvd():
         form = request.form
         t_str = form["t_hints"]
         n_size = os.environ["N_SIZE"]
-        data = service.generate_data(t_str, int(n_size))
+        t = service.parse_t(t_str, n_size)
+        if type(t) != type([]):
+            return t
+        print(t)
+        data = service.generate_data(t, int(n_size))
         service.DATA = data
-        return redirect(url_for('generate_inputs'))
+        return redirect(url_for('generate_input'))
     else:
         n_size = os.environ["N_SIZE"]
         gvd = service.gilbert_varshamov_dist(int(n_size))
@@ -54,7 +58,7 @@ def calculate_gvd():
     
 
 @app.route('/input', methods=["POST", "GET"])
-def generate_inputs():
+def generate_input():
     if request.method== "GET":
         return render_template('gen_inputs.html', data=service.DATA)
     else:
@@ -67,6 +71,7 @@ def generate_inputs():
             output = service.decode_with_hints(service.DATA, int(attempts))
             return render_template('decoded.html', data=output)
     
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=PORT, debug=True)

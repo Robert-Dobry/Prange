@@ -38,15 +38,7 @@ def inverse_matrix(m):
         return result
 
 
-def mat_mul(a,b):
-    x = numpy.dot(a,b)
-    result = []
-    for item in x:
-        result.append(item%2)
-    return result
-
-
-def multiply_gf2(x, A):
+def matrix_multiply(x, A):
     x = numpy.array(x, dtype=numpy.int8)
     A = numpy.array(A, dtype=numpy.int8)
     result = [int(x) for x in numpy.mod(numpy.dot(x,A),2)]
@@ -64,13 +56,6 @@ def add_vectors(a,b):
     return result
 
 
-def gen_random_e(n,w):
-    result = zeros(n)
-    indexes = gen_information_set(n,w)
-    for i in indexes:
-        result[i-1] = 1
-    return result
-
 
 def gen_random_e_with_hints(t,n):
     result = []
@@ -82,19 +67,6 @@ def gen_random_e_with_hints(t,n):
         result += subresult
     return result
 
-
-def gen_random_codeword(g):
-    #m = [random.randint(0,1) for i in range(n)]
-    index = random.randint(0,len(g)-1)
-    return g[index]
-
-
-def gen_random_t(size, omega):
-    result = zeros(size)
-    while sum(result) < omega:
-        result[random.randint(0,len(result)-1)] += 1
-    return result
-        
 
 def gen_random_message(n):
     result = []
@@ -120,30 +92,6 @@ def gen_information_set(n,k):
 
 def zeros(n):
     return [0 for i in range(n)]
-
-
-def gen_inf_set_with_hints(t,n,k):
-    N = []
-    result = []
-    num = 1
-    for item in t:
-        ni = []
-        for i in range(int(n/2)):
-            ni.append(num)
-            num+=1
-        N.append(ni)
-    n_indexes = calculate_indexes(t,n,k)
-    i = 0
-    for index in n_indexes:
-        subresult = []
-        while (len(subresult) < index):
-            a = random.choice(N[i])
-            if a not in subresult:
-                subresult.append(a)
-        subresult.sort()
-        result += subresult
-        i+=1
-    return result
 
 
 def gen_inf_set_with_x(x, n, k): # x = [4,4]
@@ -175,7 +123,6 @@ def gen_2_sections(n):
     return result
         
     
-
 def calculate_cardinalities(t, n):
     result = []
     n_sections = len(t)
