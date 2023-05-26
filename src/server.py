@@ -66,7 +66,7 @@ def generate_input():
         attempts = os.environ["N_ATTEMPTS"]
         if button == "plain":
             output = service.decode_plain_isd(service.DATA, int(attempts))
-            return render_template('decoded.html', data=output)
+            return render_template('view_result.html', data=output)
         elif button == "hints":
             output = service.decode_with_hints(service.DATA, int(attempts))
             return render_template('view_result.html', data=output)
