@@ -34,7 +34,7 @@ def begin():
         else:
             return "<h3>value n must be positive even integer</h3>"
     else:
-        return render_template('index.html')
+        return render_template('enter_size.html')
 
 
 @app.route('/error-count', methods=["POST","GET"])
@@ -60,7 +60,7 @@ def calculate_gvd():
 @app.route('/input', methods=["POST", "GET"])
 def generate_input():
     if request.method== "GET":
-        return render_template('gen_inputs.html', data=service.DATA)
+        return render_template('gen_input.html', data=service.DATA)
     else:
         button = request.form["decode-button"]
         attempts = os.environ["N_ATTEMPTS"]
@@ -69,7 +69,7 @@ def generate_input():
             return render_template('decoded.html', data=output)
         elif button == "hints":
             output = service.decode_with_hints(service.DATA, int(attempts))
-            return render_template('decoded.html', data=output)
+            return render_template('view_result.html', data=output)
     
 
 
