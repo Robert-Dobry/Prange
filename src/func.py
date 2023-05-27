@@ -255,20 +255,20 @@ def inverse_matrix_numpy_gf2(matrix):
     matrix = numpy.array(matrix, dtype=numpy.uint8)
     n = matrix.shape[0]
     identity = numpy.eye(n, dtype=int)
-    augmented_matrix = numpy.concatenate((matrix, identity), axis=1)
+    aug_mat = numpy.concatenate((matrix, identity), axis=1)
     for i in range(n):
         pivot_row = -1
         for j in range(i, n):
-            if augmented_matrix[j, i] == 1:
+            if aug_mat[j, i] == 1:
                 pivot_row = j
                 break
         if pivot_row == -1:
             return []
-        augmented_matrix[[i, pivot_row], :] = augmented_matrix[[pivot_row, i], :]
+        aug_mat[[i, pivot_row], :] = aug_mat[[pivot_row, i], :]
         for j in range(n):
-            if j != i and augmented_matrix[j, i] == 1:
-                augmented_matrix[j, :] = (augmented_matrix[j, :] + augmented_matrix[i, :]) % 2
-    inverse_matrix = augmented_matrix[:, n:]
+            if j != i and aug_mat[j, i] == 1:
+                aug_mat[j, :] = (aug_mat[j, :] + aug_mat[i, :]) % 2
+    inverse_matrix = aug_mat[:, n:]
     return inverse_matrix.tolist()
 
 
