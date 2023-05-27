@@ -1,5 +1,5 @@
-import random, numpy, math
-
+import random, numpy, math, scipy, sympy
+from scipy import linalg
 
 def mask_matrix(m, inf_set):
     result = []
@@ -26,17 +26,18 @@ def substract_vectors(a,b):
         result.append((a[i]-b[i])%2)
     return result
 
-
-
-
-def inverse_matrix(m):
-    det = int(numpy.linalg.det(m))
-    if det == 0:
-        return []
-    else:
-        result = numpy.mod(numpy.linalg.inv(m),2)
+    
+def inverse_matrix_sympy(m):
+    matrix = sympy.Matrix(m)
+    result = []
+    try:
+        inverse_matrix = matrix.inv_mod(2)
+        result = [[inverse_matrix[i, j] for j in range(inverse_matrix.shape[1])] for i in range(inverse_matrix.shape[0])]
         return result
-
+    except Exception as e:
+        print(e)
+        return []
+    
 
 def matrix_multiply(x, A):
     x = numpy.array(x, dtype=numpy.int8)
@@ -54,7 +55,6 @@ def add_vectors(a,b):
         for i in range(size):
             result.append((a[i]+b[i]) % 2)
     return result
-
 
 
 def gen_random_e_with_hints(t,n):
@@ -211,10 +211,16 @@ def gilbert_varshamov_distance(n,k):
 
 
 def print_matrix(m):
+    COLOR_RED = "\033[91m"
+    COLOR_RESET = "\033[0m"
+    COLOR_YELLOW = "\033[93m"
     for row in m:
         print('|',end=' ')
         for num in row:
-            print(num, end=' ')
+            if num == 1:
+                print(COLOR_RED + str(num) + COLOR_RESET, end=' ')
+            else:
+                print(' ', end=' ')
         print('|')
 
 
@@ -243,6 +249,39 @@ def sumNcR(d,n):
         addition = math.comb(n,i)
         summary += addition
     return summary
+
+
+def inverse_matrix_numpy_gf2(matrix):
+    matrix = numpy.array(matrix, dtype=numpy.uint8)
+    n = matrix.shape[0]
+    identity = numpy.eye(n, dtype=int)
+    augmented_matrix = numpy.concatenate((matrix, identity), axis=1)
+    for i in range(n):
+        pivot_row = -1
+        for j in range(i, n):
+            if augmented_matrix[j, i] == 1:
+                pivot_row = j
+                break
+        if pivot_row == -1:
+            return []
+        augmented_matrix[[i, pivot_row], :] = augmented_matrix[[pivot_row, i], :]
+        for j in range(n):
+            if j != i and augmented_matrix[j, i] == 1:
+                augmented_matrix[j, :] = (augmented_matrix[j, :] + augmented_matrix[i, :]) % 2
+    inverse_matrix = augmented_matrix[:, n:]
+    return inverse_matrix.tolist()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     

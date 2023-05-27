@@ -3,3 +3,4 @@ __pycache__/
 dist/
 build/
 server.spec
+.venv2-test/
