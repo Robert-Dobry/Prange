@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Result</title>
+    <title> Result </title>
 </head>
 <body>
     <div class="container">
@@ -34,6 +34,14 @@
         <div class="container-child-add-info">
             {{ data["n_attempts"] }}
         </div><br><br><br>
+
+        <div class="decode-buttons">
+            <form class="return-button" method="post">
+                <span> 
+                    <button type="submit" name="decode-button" value="return"> Return to start </button>   
+                </span>
+            </form>
+        </div>
 
     </div>
 </body>

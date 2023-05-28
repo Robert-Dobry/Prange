@@ -1,6 +1,5 @@
-.venv/
+venv/
 __pycache__/
 dist/
 build/
 server.spec
-.venv2-test/

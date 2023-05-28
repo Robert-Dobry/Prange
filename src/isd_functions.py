@@ -1,5 +1,4 @@
-import random, numpy, math, scipy, sympy
-from scipy import linalg
+import random, numpy, math
 
 def mask_matrix(m, inf_set):
     result = []
@@ -15,30 +14,7 @@ def hwt(v):
             result+=1
     return result
 
-
-def substract_vectors_numpy(a,b):
-    return numpy.mod(numpy.subtract(a,b),2)
-
-
-def substract_vectors(a,b):
-    result = []
-    for i in range(len(a)):
-        result.append((a[i]-b[i])%2)
-    return result
-
     
-def inverse_matrix_sympy(m):
-    matrix = sympy.Matrix(m)
-    result = []
-    try:
-        inverse_matrix = matrix.inv_mod(2)
-        result = [[inverse_matrix[i, j] for j in range(inverse_matrix.shape[1])] for i in range(inverse_matrix.shape[0])]
-        return result
-    except Exception as e:
-        print(e)
-        return []
-    
-
 def matrix_multiply(x, A):
     x = numpy.array(x, dtype=numpy.int8)
     A = numpy.array(A, dtype=numpy.int8)
@@ -68,9 +44,9 @@ def gen_random_e_with_hints(t,n):
     return result
 
 
-def gen_random_message(n):
+def gen_random_message(k):
     result = []
-    for i in range(n):
+    for i in range(k):
         result.append(random.randint(0,1))
     return result
 
@@ -158,7 +134,7 @@ def calculate_indexes(t,n,k):
     return x
 
 
-def Pprange(x, t, n): # calculates probabilty of success of ISD with given T decomposition
+def Pprange(x, t, n): 
     result = 1
     lenght = len(x)
     ni = int(n/2)
@@ -213,14 +189,13 @@ def gilbert_varshamov_distance(n,k):
 def print_matrix(m):
     COLOR_RED = "\033[91m"
     COLOR_RESET = "\033[0m"
-    COLOR_YELLOW = "\033[93m"
     for row in m:
         print('|',end=' ')
         for num in row:
             if num == 1:
                 print(COLOR_RED + str(num) + COLOR_RESET, end=' ')
             else:
-                print(' ', end=' ')
+                print(str(num), end=' ')
         print('|')
 
 
@@ -270,6 +245,18 @@ def inverse_matrix_numpy_gf2(matrix):
                 aug_mat[j, :] = (aug_mat[j, :] + aug_mat[i, :]) % 2
     inverse_matrix = aug_mat[:, n:]
     return inverse_matrix.tolist()
+
+
+# def inverse_matrix_sympy(m):
+#     matrix = sympy.Matrix(m)
+#     result = []
+#     try:
+#         inverse_matrix = matrix.inv_mod(2)
+#         result = [[inverse_matrix[i, j] for j in range(inverse_matrix.shape[1])] for i in range(inverse_matrix.shape[0])]
+#         return result
+#     except Exception as e:
+#         print(e)
+#         return []
 
 
 

@@ -18,7 +18,7 @@ else:
 
 @app.route('/')
 def home():
-    return "<h1>Welcome to root page. To use ISD decoder go to '/begin' endpoint</h1>"
+    return "<h1>Welcome to root page. To use Information-Set decoder go to '/begin' endpoint</h1>"
 
 
 @app.route('/begin', methods=["POST","GET"])
@@ -42,6 +42,9 @@ def calculate_gvd():
     if request.method=='POST':
         form = request.form
         t_str = form["t_hints"]
+        n_size = 0
+        if "N_SIZE" not in os.environ:
+            return "<b>Please define N (code size) and Maximal attempt count</b>"
         n_size = os.environ["N_SIZE"]
         t = service.parse_t(t_str, n_size)
         if type(t) != type([]):
@@ -51,7 +54,9 @@ def calculate_gvd():
         service.DATA = data
         return redirect(url_for('generate_input'))
     else:
-        n_size = os.environ["N_SIZE"]
+        n_size = 0
+        if "N_SIZE" in os.environ:
+            n_size = os.environ["N_SIZE"]
         gvd = service.gilbert_varshamov_dist(int(n_size))
         max_errors = int((gvd-1)/2)
         return render_template('enter_decomposition.html', gvd = gvd, max_errors = max_errors)
@@ -70,6 +75,8 @@ def generate_input():
         elif button == "hints":
             output = service.decode_with_hints(service.DATA, int(attempts))
             return render_template('view_result.html', data=output)
+        elif button == "return":
+            return render_template("enter_size.html")
     
 
 

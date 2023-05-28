@@ -1,5 +1,4 @@
-import func as f
-import time
+import isd_functions as f
 
 DATA = None
 HINTS = []
@@ -81,7 +80,7 @@ def decode_plain_isd(data, attempts):
         inverse_masked_matrix = f.inverse_matrix_numpy_gf2(masked_matrix)
         if inverse_masked_matrix==[]:
             n_not_inv += 1
-            print("not inv: ", n_not_inv)
+            #print("not inv: ", n_not_inv)
             continue
         x_vector = f.matrix_multiply(masked_vector, inverse_masked_matrix)
         xG = f.matrix_multiply(x_vector, data["gen_matrix"])
@@ -131,7 +130,7 @@ def decode_with_hints(data, attempts):
                     "n_inv" : n_not_inv}
         else:
             n_attemps += 1
-            #print("attempt: ", n_attemps)
+            print("attempt: ", n_attemps)
             continue
     return {
         "decode_type" : "ISD with Hints",
