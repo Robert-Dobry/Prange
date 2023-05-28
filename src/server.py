@@ -49,7 +49,6 @@ def calculate_gvd():
         t = service.parse_t(t_str, n_size)
         if type(t) != type([]):
             return t
-        print(t)
         data = service.generate_data(t, int(n_size))
         service.DATA = data
         return redirect(url_for('generate_input'))
@@ -76,7 +75,7 @@ def generate_input():
             output = service.decode_with_hints(service.DATA, int(attempts))
             return render_template('view_result.html', data=output)
         elif button == "return":
-            return render_template("enter_size.html")
+            return redirect(url_for('begin'))
     
 
 

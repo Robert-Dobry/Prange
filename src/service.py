@@ -94,7 +94,7 @@ def decode_plain_isd(data, attempts):
                     "n_inv" : n_not_inv}
         else:
             n_attemps += 1
-            print("attempt: ", n_attemps)
+            #print("attempt: ", n_attemps)
             continue
     return {
         "decode_type" : "Plain ISD",
@@ -130,7 +130,7 @@ def decode_with_hints(data, attempts):
                     "n_inv" : n_not_inv}
         else:
             n_attemps += 1
-            print("attempt: ", n_attemps)
+            #print("attempt: ", n_attemps)
             continue
     return {
         "decode_type" : "ISD with Hints",
