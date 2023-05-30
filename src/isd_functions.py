@@ -1,9 +1,9 @@
 import random, numpy, math
 
-def mask_matrix(m, inf_set):
+def mask_matrix(m, I):
     result = []
     for row in m:
-        result.append(mask_vector(row,inf_set))
+        result.append(mask_vector(row,I))
     return result
 
 
@@ -51,9 +51,9 @@ def gen_random_message(k):
     return result
 
 
-def mask_vector(v, inf_set):
+def mask_vector(v, I):
     result = []
-    for index in inf_set:
+    for index in I:
         result.append(v[index-1])
     return result
         
@@ -257,8 +257,6 @@ def inverse_matrix_numpy_gf2(matrix):
 #     except Exception as e:
 #         print(e)
 #         return []
-
-
 
 
 

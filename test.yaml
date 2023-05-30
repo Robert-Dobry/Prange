@@ -1,2 +1,90 @@
+# Avg duration is in seconds
+
+PlainISD:
+  - n_size: 50
+    w: 1
+    prob: 0.5
+    avg_attempts: 1.98
+    avg_duration: 0.01
+    expected_attempts: 2
+
+  - n_size: 50
+    w: 2
+    prob: 0.24
+    avg_attempts: 3.86
+    avg_duration: 0.017
+    expected_attempts: 4.08
+
+  - n_size: 50
+    w: 3
+    prob: 0.12
+    avg_attempts: 8.52
+    avg_duration: 0.03
+    expected_attempts: 8.52
+
+  - n_size: 100
+    w: 1
+    prob: 0.5
+    avg_attempts: 2.2
+    avg_duration: 0.03
+    expected_attempts: 2
+
+  - n_size: 100
+    w: 3
+    avg_attempts: 7.18
+    avg_duration: 0.095
+    prob: 0.12
+    expected_attempts: 8.25
+
+  - n_size: 100
+    w: 5
+    avg_attempts: 33.02
+    avg_duration: 0.41
+    prob: 0.03
+    expected_attempts: 35.53
+
+  - n_size: 150
+    w: 1
+    avg_attempts: 1.94
+    avg_duration: 0.06
+    prob: 0.5
+    expected_attempts: 2.0
+
+  - n_size: 150
+    w: 5
+    avg_attempts: 27.28
+    avg_duration: 0.795
+    prob: 0.029
+    expected_attempts: 34.28
+
+  - n_size: 150
+    w: 8
+    avg_attempts: 421 
+    avg_duration: 12.89
+    prob: 0.0032
+    expected_attempts: 311.6
+
+  - n_size: 200
+    w: 1
+    avg_attempts: 1.88
+    avg_duration: 0.116
+    prob: 0.5
+    expected_attempts: 2
+
+  - n_size: 200
+    w: 6
+    avg_attempts: 69.08
+    avg_duration: 3.857
+    prob: 0.014
+    expected_attempts: 69.13
+
+  - n_size: 200
+    w: 11
+    avg_attempts: 1997.16
+    avg_duration: 112.608
+    prob: 0.000365
+    expected_attempts: 2738.05
+
+
 
 
