@@ -229,21 +229,21 @@ def sumNcR(d,n):
 def inverse_matrix(matrix):
     matrix = numpy.array(matrix, dtype=numpy.uint8)
     n = matrix.shape[0]
-    identity = numpy.eye(n, dtype=int)
-    aug_mat = numpy.concatenate((matrix, identity), axis=1)
+    I_matrix = numpy.eye(n, dtype=numpy.uint8)
+    extended_mat = numpy.concatenate((matrix, I_matrix), axis=1)
     for i in range(n):
         pivot_row = -1
         for j in range(i, n):
-            if aug_mat[j, i] == 1:
+            if extended_mat[j, i] == 1:
                 pivot_row = j
                 break
         if pivot_row == -1:
             return []
-        aug_mat[[i, pivot_row], :] = aug_mat[[pivot_row, i], :]
+        extended_mat[[i, pivot_row], :] = extended_mat[[pivot_row, i], :]
         for j in range(n):
-            if j != i and aug_mat[j, i] == 1:
-                aug_mat[j, :] = (aug_mat[j, :] + aug_mat[i, :]) % 2
-    inverse_matrix = aug_mat[:, n:]
+            if j != i and extended_mat[j, i] == 1:
+                extended_mat[j, :] = (extended_mat[j, :] + extended_mat[i, :]) % 2
+    inverse_matrix = extended_mat[:, n:]
     return inverse_matrix.tolist()
 
 
