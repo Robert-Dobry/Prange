@@ -1,6 +1,6 @@
 # Avg duration is in seconds
 
-PlainISD:
+PlainISDTests:
   - n_size: 50
     w: 1
     prob: 0.5
@@ -21,6 +21,8 @@ PlainISD:
     avg_attempts: 8.52
     avg_duration: 0.03
     expected_attempts: 8.52
+
+
 
   - n_size: 100
     w: 1
@@ -43,6 +45,8 @@ PlainISD:
     prob: 0.03
     expected_attempts: 35.53
 
+
+
   - n_size: 150
     w: 1
     avg_attempts: 1.94
@@ -59,10 +63,12 @@ PlainISD:
 
   - n_size: 150
     w: 8
-    avg_attempts: 421 
-    avg_duration: 12.89
+    avg_attempts: 293.03 
+    avg_duration: 10.069
     prob: 0.0032
     expected_attempts: 311.6
+
+
 
   - n_size: 200
     w: 1
@@ -80,10 +86,102 @@ PlainISD:
 
   - n_size: 200
     w: 11
-    avg_attempts: 1997.16
-    avg_duration: 112.608
+    avg_attempts: 2393.521739
+    avg_duration: 139.961
     prob: 0.000365
     expected_attempts: 2738.05
+
+line : "-------------------------------------------"
+
+PlainISDHintsTests:
+
+  - n_size: 50
+    t: (1,2)
+    avg_attempts: 6.8
+    avg_duration: 0.023
+    prob: 0.145
+    expected_attempts: 6.89
+
+
+
+  - n_size: 100
+    t: (1,2)
+    avg_attempts: 6.82 
+    avg_duration: 0.108
+    prob: 0.146
+    expected_attempts: 6.82
+
+  - n_size: 100
+    t: (1,4)
+    avg_attempts: 13.58
+    avg_duration: 0.116
+    prob: 0.079
+    expected_attempts: 12.59
+
+  - n_size: 100
+    t: (2,3)
+    avg_attempts: 28.3
+    avg_duration: 0.336
+    prob: 0.032
+    expected_attempts: 31.12
+
+
+
+  - n_size: 150
+    t: (1,7)
+    avg_attempts:  24.08
+    avg_duration: 0.406
+    prob: 0.047
+    expected_attempts: 21.24
+
+  - n_size: 150
+    t: (2,6)
+    avg_attempts: 92.5 
+    avg_duration: 1.989
+    prob: 0.00993
+    expected_attempts: 100.64
+
+  - n_size: 150
+    t: (3,5)
+    avg_attempts: 242.25 
+    avg_duration: 6.930
+    prob: 0.0043
+    expected_attempts: 231.91
+
+
+
+  - n_size: 200
+    t: (2,9)
+    avg_attempts: 285.2
+    avg_duration: 9.703
+    prob: 0.00476
+    expected_attempts: 210 
+
+  - n_size: 200
+    t: (3,8)
+    avg_attempts: 635.2
+    avg_duration: 26.445
+    prob: 0.0013
+    expected_attempts: 765.3
+
+  - n_size: 200
+    t: (4,7)
+    avg_attempts: 1503.36
+    avg_duration: 73.678
+    prob: 0.00058
+    expected_attempts: 1715
+
+  - n_size: 200
+    t: (5,6)
+    avg_attempts: 2113.6
+    avg_duration: 127.963
+    prob: 0.00039
+    expected_attempts: 2533.9 
+
+
+
+
+
 
 
 

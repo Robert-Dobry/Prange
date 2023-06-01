@@ -226,7 +226,7 @@ def sumNcR(d,n):
     return summary
 
 
-def inverse_matrix_numpy_gf2(matrix):
+def inverse_matrix(matrix):
     matrix = numpy.array(matrix, dtype=numpy.uint8)
     n = matrix.shape[0]
     identity = numpy.eye(n, dtype=int)
